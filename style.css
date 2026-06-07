@@ -309,6 +309,7 @@ footer a {
 
     .popup {
         flex-direction: column;
+        height: 100vh;
     }
 
     .popup #controls {
