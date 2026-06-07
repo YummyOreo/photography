@@ -77,6 +77,10 @@ body {
     padding: 0 0;
 }
 
+.gallery div img:hover {
+    cursor: pointer;
+}
+
 .image-grid {
     display: flex;
     gap: 0.5rem;
@@ -96,7 +100,6 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    transition: all 5s ease-in-out;
     background: color-mix(in srgb, var(--bg) 95%, transparent);
     z-index: 10;
     width: 100vw;
@@ -104,7 +107,23 @@ body {
 }
 
 .popup img {
-    max-height: 70lvh;
+    max-height: 75lvh;
+}
+
+.popup button {
+    background: none;
+    border: none;
+    opacity: 70%;
+    transition: all 0.5s ease-in-out;
+}
+
+.popup button:hover, .popup button:active, .popup button:focus {
+    opacity: 100%;
+    cursor: pointer;
+}
+
+.popup button img {
+    width: 3vw;
 }
 
 .popup.active {
@@ -286,6 +305,21 @@ footer a {
     .wrapper {
         width: 90%;
         max-width: unset;
+    }
+
+    .popup {
+        flex-direction: column;
+    }
+
+    .popup #controls {
+        flex-direction: row;
+        width: 70%;
+        justify-content: space-between;
+        margin-top: auto;
+    }
+
+    .popup #controls img {
+        width: 10vw;
     }
 
     .popup div {

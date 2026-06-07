@@ -70,10 +70,31 @@ function render(gallery) {
     container.style.height = max + "px"
 }
 
-function imageClick(e, image) {
+function getIndex(gallery, uid) {
+    let images = gallery.images;
+    let indx = 0;
+    for (const image of images) {
+        if (image.uid == uid) {
+            return indx
+        }
+        indx += 1
+    }
+}
+
+function imageClick(image, gallery) {
     let popup = document.querySelector(".popup")
     popup.classList.add("active");
     document.getElementById("body").classList.add("no-scroll")
+
+    const prev = document.createElement("button");
+    prev.innerHTML = `<img src="./assets/prev.svg" alt="previous photo">`;
+    const next = document.createElement("button");
+    next.innerHTML = `<img src="./assets/next.svg" alt="next photo">`;
+
+    let width = document.body.getBoundingClientRect().width;
+    if (width > 992) {
+        popup.appendChild(prev)
+    }
 
     const el = document.createElement("img");
     el.setAttribute("src", image.src);
@@ -87,13 +108,42 @@ function imageClick(e, image) {
     cont.appendChild(el);
     cont.appendChild(caption);
     popup.appendChild(cont);
+    if (width > 992) {
+        popup.appendChild(next)
+    } else {
+        let controlContainer = document.createElement("div");
+        controlContainer.appendChild(prev)
+        controlContainer.appendChild(next)
+        controlContainer.id = "controls"
+        popup.appendChild(controlContainer)
+    }
+
+    prev.addEventListener("click", (e) => {
+        console.log(gallery)
+        let indx = getIndex(gallery, image.uid)
+        indx -= 1;
+        if (indx < 0) {
+            indx = gallery.images.length - 2;
+        }
+        popup.innerHTML = ""
+        imageClick(gallery.images[indx], gallery)
+    })
+    next.addEventListener("click", (e) => {
+        let indx = getIndex(gallery, image.uid)
+        indx += 1;
+        if (indx == gallery.images.length) {
+            indx = 0;
+        }
+        popup.innerHTML = ""
+        imageClick(gallery.images[indx], gallery)
+    })
 
     popup.addEventListener("click", (e) => {
-        if (e.target.nodeName == "IMG" || e.target.nodeName == "P") {
+        if (e.target.nodeName == "IMG" || e.target.nodeName == "P" || e.target.nodeName == "BUTTON") {
             return
         }
         popup.classList.remove("active");
-        cont.remove();
+        popup.innerHTML = ""
         document.getElementById("body").classList.remove("no-scroll")
     })
 }
@@ -108,7 +158,7 @@ export function renderGallery(gallery) {
             el.setAttribute("src", image.src);
 	    last = el
             el.addEventListener("click", (e) => {
-                imageClick(e, image);
+                imageClick(image, gallery);
             })
             // let caption = document.createElement("p");
             let cont = document.createElement("div");
