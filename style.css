@@ -316,7 +316,6 @@ footer a {
         flex-direction: row;
         width: 70%;
         justify-content: space-between;
-        margin-top: auto;
     }
 
     .popup #controls img {
@@ -325,6 +324,7 @@ footer a {
 
     .popup div {
         width: 90%;
+        margin-top: auto;
     }
 
     .popup img {
