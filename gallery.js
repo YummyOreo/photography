@@ -35,14 +35,6 @@ function render(gallery) {
         el.style.left = (initialX + currentCol * (width + gap)) + "px";
         el.style.top = (initialY + offsetY[currentCol]) + "px";
 
-        // if (image.caption != undefined) {
-        //     let capt = document.querySelector("#" + id + " .caption");
-        //     capt.style.width = width + "px";
-        //     capt.style.left = (initialX + currentCol * (width + gap)) + "px";
-        //     capt.style.top = (initialY + height + gap + offsetY[currentCol]) + "px";
-        //     let captHeight = capt.getBoundingClientRect().height;
-        // }
-
         offsetY[currentCol] += height + gap;
 
         if (colNumber == 1) {
@@ -148,6 +140,15 @@ function imageClick(image, gallery) {
     })
 }
 
+let loaded = 0;
+
+function imageLoaded(gallery) {
+    loaded += 1;
+    if (gallery.images.length == loaded) {
+        renderGallery(gallery)
+    }
+}
+
 export function renderGallery(gallery) {
     let container = gallery.container;
     let last = undefined
@@ -160,19 +161,14 @@ export function renderGallery(gallery) {
             el.addEventListener("click", (e) => {
                 imageClick(image, gallery);
             })
-            // let caption = document.createElement("p");
             let cont = document.createElement("div");
             cont.setAttribute("id", image.uid);
-            // caption.textContent = image.caption;
-            // caption.classList.add("caption");
-            // caption.setAttribute("uid", image.uid)
             cont.appendChild(el);
-            // cont.appendChild(caption);
             container.appendChild(cont);
+            el.addEventListener("load", () => {
+                imageLoaded(gallery);
+            })
         }
-        last.addEventListener("load", () => {
-            render(gallery)
-        })
     } else {
         render(gallery)
     }
