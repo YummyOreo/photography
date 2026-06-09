@@ -268,7 +268,7 @@ export function newGallery(images, container) {
     };
     renderGallery(gallery);
     window.addEventListener('resize', () => {
-            render(gallery)
+        render(gallery)
     });
     return gallery;
 }
