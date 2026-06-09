@@ -79,13 +79,13 @@ function getIndex(gallery, uid) {
     }
 }
 
-function addImage(image, gallery, click) {
+function addImage(image, gallery, popup) {
     const el = document.createElement("img");
     el.setAttribute("src", image.src);
     let cont = document.createElement("div");
     cont.setAttribute("id", image.uid);
     cont.appendChild(el);
-    if (!click) {
+    if (!popup) {
         el.addEventListener("click", (e) => {
             imageClick(image, gallery);
         })
@@ -96,7 +96,7 @@ function addImage(image, gallery, click) {
     return cont
 }
 
-function addVideo(video, gallery, click) {
+function addVideo(video, gallery, popup) {
     const el = document.createElement("video");
 
     el.setAttribute("width", video.width);
@@ -113,9 +113,11 @@ function addVideo(video, gallery, click) {
     source.setAttribute("src", video.src);
 
     el.appendChild(source)
+    el.classList.add("loading")
 
     el.addEventListener("loadeddata", () => {
-        console.log("loaded el")
+        el.classList.add("loaded")
+        el.classList.remove("loading")
     })
 
     let cont = document.createElement("div");
@@ -129,7 +131,7 @@ function addVideo(video, gallery, click) {
             </div>
     `
 
-    if (!click) {
+    if (!popup) {
         el.addEventListener("timeupdate", () => {
             let curr = (el.currentTime / el.duration) * 100
             document.querySelector('.video-controls .inner').style.width = `${curr}%`
@@ -150,7 +152,7 @@ function addVideo(video, gallery, click) {
 
     cont.setAttribute("id", video.uid);
     cont.appendChild(el);
-    if (!click) {
+    if (!popup) {
         cont.appendChild(controls)
     }
     return cont

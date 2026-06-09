@@ -129,7 +129,7 @@ body {
     margin-bottom: 0;
 }
 
-.gallery div:has(video) {
+.gallery div:has(video.loading) {
     background: var(--bg2);
 }
 
