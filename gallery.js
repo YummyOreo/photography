@@ -103,6 +103,9 @@ function addVideo(video, gallery, click) {
     el.setAttribute("height", video.height);
     el.muted = true
     el.loop = true
+    el.playsInline = true
+    el.controls = false
+    el.preload = true
     el.setAttribute("autoplay", "")
 
     const source = document.createElement("source")
