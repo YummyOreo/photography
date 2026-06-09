@@ -79,6 +79,79 @@ function getIndex(gallery, uid) {
     }
 }
 
+function addImage(image, gallery, click) {
+    const el = document.createElement("img");
+    el.setAttribute("src", image.src);
+    let cont = document.createElement("div");
+    cont.setAttribute("id", image.uid);
+    cont.appendChild(el);
+    if (!click) {
+        el.addEventListener("click", (e) => {
+            imageClick(image, gallery);
+        })
+        el.addEventListener("load", () => {
+            imageLoaded(gallery);
+        })
+    }
+    return cont
+}
+
+function addVideo(video, gallery, click) {
+    const el = document.createElement("video");
+
+    el.setAttribute("width", video.width);
+    el.setAttribute("height", video.height);
+    el.muted = true
+    el.loop = true
+    el.setAttribute("autoplay", "")
+
+    const source = document.createElement("source")
+
+    source.setAttribute("src", video.src);
+
+    el.appendChild(source)
+
+    el.addEventListener("loadeddata", () => {
+        console.log("loaded el")
+    })
+
+    let cont = document.createElement("div");
+    let controls = document.createElement("div")
+    controls.classList.add("video-controls")
+    controls.innerHTML = `
+            <div class="timeline">
+                <div class="bar">
+                    <div class="inner"></div>
+                </div>
+            </div>
+    `
+
+    if (!click) {
+        el.addEventListener("timeupdate", () => {
+            let curr = (el.currentTime / el.duration) * 100
+            document.querySelector('.video-controls .inner').style.width = `${curr}%`
+        })
+    }
+
+    el.addEventListener("click", () => {
+        if(el.paused){
+            el.play()
+            el.classList.remove("paused")
+        }
+        else{
+            el.pause()
+            el.classList.add("paused")
+        }
+    })
+
+    cont.setAttribute("id", video.uid);
+    cont.appendChild(el);
+    if (!click) {
+        cont.appendChild(controls)
+    }
+    return cont
+}
+
 function imageClick(image, gallery) {
     let popup = document.querySelector(".popup")
     popup.classList.add("active");
@@ -94,16 +167,20 @@ function imageClick(image, gallery) {
         popup.appendChild(prev)
     }
 
-    const el = document.createElement("img");
-    el.setAttribute("src", image.src);
+    let cont = undefined
+    if (image.type == "img") {
+        cont = addImage(image, gallery, true)
+    } else if (image.type == "video") {
+        cont = addVideo(image, gallery, true)
+    }
+    cont.setAttribute("id-popup", image.uid);
+    cont.id = ""
 
     let caption = document.createElement("p");
-    let cont = document.createElement("div");
-    cont.setAttribute("id-popup", image.uid);
     caption.textContent = image.caption;
     caption.classList.add("caption");
     caption.setAttribute("uid", image.uid)
-    cont.appendChild(el);
+
     cont.appendChild(caption);
     popup.appendChild(cont);
     if (width > 992) {
@@ -137,7 +214,7 @@ function imageClick(image, gallery) {
     })
 
     popup.addEventListener("click", (e) => {
-        if (e.target.nodeName == "IMG" || e.target.nodeName == "P" || e.target.nodeName == "BUTTON") {
+        if (e.target.nodeName == "IMG" || e.target.nodeName == "P" || e.target.nodeName == "BUTTON" || e.target.nodeName == "VIDEO") {
             return
         }
         popup.classList.remove("active");
@@ -156,73 +233,6 @@ function imageLoaded(gallery) {
     }
 }
 
-function addImage(image, gallery) {
-    const el = document.createElement("img");
-    el.setAttribute("src", image.src);
-    el.addEventListener("click", (e) => {
-        imageClick(image, gallery);
-    })
-    let cont = document.createElement("div");
-    cont.setAttribute("id", image.uid);
-    cont.appendChild(el);
-    el.addEventListener("load", () => {
-        imageLoaded(gallery);
-    })
-    return cont
-}
-
-function addVideo(video, gallery) {
-    const el = document.createElement("video");
-
-    el.setAttribute("width", video.width);
-    el.setAttribute("height", video.height);
-    el.muted = true
-    el.loop = true
-    // el.setAttribute("controls", "")
-    el.setAttribute("autoplay", "")
-
-    const source = document.createElement("source")
-
-    source.setAttribute("src", video.src);
-
-    el.appendChild(source)
-
-    el.addEventListener("loadeddata", () => {
-        console.log("loaded el")
-    })
-
-    let cont = document.createElement("div");
-    let controls = document.createElement("div")
-    controls.classList.add("video-controls")
-    controls.innerHTML = `
-            <div class="timeline">
-                <div class="bar">
-                    <div class="inner"></div>
-                </div>
-            </div>
-    `
-
-    el.addEventListener("timeupdate", () => {
-        let curr = (el.currentTime / el.duration) * 100
-        document.querySelector('.video-controls .inner').style.width = `${curr}%`
-    })
-
-    el.addEventListener("click", () => {
-        if(el.paused){
-            el.play()
-            el.classList.remove("paused")
-        }
-        else{
-            el.pause()
-            el.classList.add("paused")
-        }
-    })
-
-    cont.setAttribute("id", video.uid);
-    cont.appendChild(el);
-    cont.appendChild(controls)
-    return cont
-}
 
 export function renderGallery(gallery) {
     let container = gallery.container;

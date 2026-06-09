@@ -145,6 +145,18 @@ body {
     pointer-events: none;
 }
 
+.popup div:has(video.paused)::before {
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: url(./assets/play.svg);
+    background-position: center center;
+    background-size: 10%;
+    background-repeat: no-repeat;
+    position: absolute;
+    pointer-events: none;
+}
+
 .video-controls {
     position: absolute;
     bottom: 25px;
@@ -187,8 +199,13 @@ body {
     height: 100lvh;
 }
 
-.popup img {
+.popup img, .popup video {
     max-height: 75lvh;
+    margin: 1rem 0;
+}
+
+.popup .timeline {
+    display: none;
 }
 
 .popup button {
@@ -408,7 +425,7 @@ footer a {
         margin-top: auto;
     }
 
-    .popup img {
+    .popup img, .popup video {
         max-height: 75lvh;
     }
 
