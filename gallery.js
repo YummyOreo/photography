@@ -136,7 +136,7 @@ function addVideo(video, gallery, click) {
         })
     }
 
-    el.addEventListener("click", () => {
+    el.addEventListener("click", (e) => {
         if(el.paused){
             el.play()
             el.classList.remove("paused")
@@ -145,6 +145,7 @@ function addVideo(video, gallery, click) {
             el.pause()
             el.classList.add("paused")
         }
+        e.preventDefault()
     })
 
     cont.setAttribute("id", video.uid);
