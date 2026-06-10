@@ -103,13 +103,6 @@
     src: url(/assets/fonts/PPWriter-BoldItalic.otf)
 }
 
-@font-face {
-    font-family: "Writer";
-    font-style: italic;
-    font-weight: bolder;
-    src: url(/assets/fonts/PPWriter-UltraboldItalic.otf)
-}
-
 /* General */
 body {
     position: relative;
