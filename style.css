@@ -1,6 +1,6 @@
 * {
     margin: 0;
-    font-family: 'Atkinson';
+    font-family: 'Writer';
 
     /* https://coolors.co/ee8f1b-d17b0f-3e3e33-70715c-d9dac9-fcfced */
     --bg: #fcfced;
@@ -23,6 +23,91 @@
     font-family: "Atkinson";
     font-style: italic;
     src: url(/assets/fonts/AtkinsonHyperlegibleNext-Italic-VariableFont_wght.ttf)
+}
+
+@font-face {
+    font-family: "Palma";
+    font-style: normal;
+    font-weight: normal;
+    src: url(/assets/fonts/PPPalma-FizzyMedium.otf)
+}
+
+@font-face {
+    font-family: "Palma";
+    font-style: normal;
+    font-weight: lighter;
+    src: url(/assets/fonts/PPPalma-FizzyLight.otf)
+}
+
+@font-face {
+    font-family: "Palma";
+    font-style: normal;
+    font-weight: bold;
+    src: url(/assets/fonts/PPPalma-FizzyHeavy.otf)
+}
+
+@font-face {
+    font-family: "Palma";
+    font-style: italic;
+    font-weight: normal;
+    src: url(/assets/fonts/PPPalma-FizzyMediumItalic.otf)
+}
+
+@font-face {
+    font-family: "Palma";
+    font-style: italic;
+    font-weight: lighter;
+    src: url(/assets/fonts/PPPalma-FizzyLightItalic.otf)
+}
+
+@font-face {
+    font-family: "Palma";
+    font-style: italic;
+    font-weight: bold;
+    src: url(/assets/fonts/PPPalma-FizzyHeavyItalic.otf)
+}
+
+@font-face {
+    font-family: "Writer";
+    font-style: normal;
+    font-weight: normal;
+    src: url(/assets/fonts/PPWriter-Regular.otf)
+}
+
+@font-face {
+    font-family: "Writer";
+    font-style: normal;
+    font-weight: lighter;
+    src: url(/assets/fonts/PPWriter-ThinText.otf)
+}
+
+@font-face {
+    font-family: "Writer";
+    font-style: normal;
+    font-weight: bold;
+    src: url(/assets/fonts/PPWriter-Bold.otf)
+}
+
+
+@font-face {
+    font-family: "Writer";
+    font-style: italic;
+    font-weight: normal;
+    src: url(/assets/fonts/PPWriter-RegularItalic.otf)
+}
+
+@font-face {
+    font-family: "Writer";
+    font-style: italic;
+    font-weight: bold;
+    src: url(/assets/fonts/PPWriter-BoldItalic.otf)
+}
+
+@font-face {
+    font-family: "Writer";
+    font-style: italic;
+    font-weight: bolder;
+    src: url(/assets/fonts/PPWriter-UltraboldItalic.otf)
 }
 
 /* General */
