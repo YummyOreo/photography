@@ -21,8 +21,9 @@ function render(gallery) {
     let maxImageWidth = (width - (3 * colNumber)) / colNumber;
 
     let currentCol = 0;
-    let offsetY = [0, 0, 0];
+    let offsetY = [initialY, initialY, initialY];
     for (const image of images) {
+        console.log(image)
         let id = image.uid;
         let el = document.getElementById(id);
 
@@ -35,13 +36,14 @@ function render(gallery) {
 
         let height = el.getBoundingClientRect().height;
         if (image.type == "video") {
-            el.querySelector("video").getAttribute("height");
+            height = el.querySelector("video").getAttribute("height");
         }
 
         el.style.left = (initialX + currentCol * (width + gap)) + "px";
-        el.style.top = (initialY + offsetY[currentCol]) + "px";
+        el.style.top = (offsetY[currentCol]) + "px";
 
         offsetY[currentCol] += height + gap;
+        console.log(el.getBoundingClientRect().bottom, offsetY[currentCol])
 
         if (colNumber == 1) {
             continue
@@ -51,7 +53,7 @@ function render(gallery) {
         if (lastCol < 0) {
             lastCol = colNumber - 1;
         }
-        if (offsetY[currentCol] > offsetY[lastCol]) {
+        if (Math.ceil(offsetY[currentCol]) >= Math.ceil(offsetY[lastCol])) {
             currentCol += 1;
             if (currentCol > colNumber - 1) {
                 currentCol = 0
