@@ -271,7 +271,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    background: color-mix(in srgb, var(--bg) 95%, transparent);
+    background: var(--bg);
     z-index: 10;
     width: 100vw;
     height: 100lvh;
@@ -291,6 +291,17 @@ body {
     border: none;
     opacity: 70%;
     transition: all 0.5s ease-in-out;
+}
+
+.popup button.back {
+    position: absolute;
+    top: 0rem;
+    right: 0rem;
+    padding: 0.5rem 0.5rem;
+}
+
+.popup button img {
+    margin: 0;
 }
 
 .popup button:hover, .popup button:active, .popup button:focus {
@@ -356,6 +367,15 @@ body {
     align-items: center;
     display: flex;
 
+}
+
+.icon {
+    height: 1rem;
+    width: 1rem;
+    align-self: center;
+    margin: 0;
+    margin-right: 0.2em;
+    margin-bottom: -3px;
 }
 
 p, li, ul {

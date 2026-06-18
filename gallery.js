@@ -23,27 +23,18 @@ function render(gallery) {
     let currentCol = 0;
     let offsetY = [initialY, initialY, initialY];
     for (const image of images) {
-        console.log(image)
         let id = image.uid;
         let el = document.getElementById(id);
 
-        let width = el.getBoundingClientRect().width;
-        if (image.type == "video") {
-            el.querySelector("video").getAttribute("height");
-        }
-        width = maxImageWidth
+        let width = maxImageWidth
         el.style.width = width + "px";
 
         let height = el.getBoundingClientRect().height;
-        if (image.type == "video") {
-            height = el.querySelector("video").getAttribute("height");
-        }
 
         el.style.left = (initialX + currentCol * (width + gap)) + "px";
         el.style.top = (offsetY[currentCol]) + "px";
 
         offsetY[currentCol] += height + gap;
-        console.log(el.getBoundingClientRect().bottom, offsetY[currentCol])
 
         if (colNumber == 1) {
             continue
@@ -67,6 +58,7 @@ function render(gallery) {
             max = y;
         }
     }
+    max = max - initialY
     container.style.height = max + "px"
 }
 
@@ -201,14 +193,39 @@ function imageClick(image, gallery) {
         popup.appendChild(controlContainer)
     }
 
+    const keylistener = document.body.addEventListener("keyup", function keyUp(e) {
+        if (e.key == "ArrowRight") {
+            document.body.removeEventListener("keyup", keyUp)
+            let indx = getIndex(gallery, image.uid)
+            indx += 1;
+            if (indx == gallery.images.length) {
+                indx = 0;
+            }
+            popup.innerHTML = `<button class="back"><img src="assets/gallery.svg" class="back" alt="back to gallery"></button>`
+            imageClick(gallery.images[indx], gallery)
+        } else if (e.key == "ArrowLeft") {
+            document.body.removeEventListener("keyup", keyUp)
+            let indx = getIndex(gallery, image.uid)
+            indx -= 1;
+            if (indx < 0) {
+                indx = gallery.images.length - 2;
+            }
+            popup.innerHTML = `<button class="back"><img src="assets/gallery.svg" class="back" alt="back to gallery"></button>`
+            imageClick(gallery.images[indx], gallery)
+        } else if (e.key == "Escape") {
+            popup.classList.remove("active");
+            popup.innerHTML = `<button class="back"><img src="assets/gallery.svg" alt="back to gallery"></button>`
+            document.getElementById("body").classList.remove("no-scroll")
+        }
+    })
+
     prev.addEventListener("click", (e) => {
-        console.log(gallery)
         let indx = getIndex(gallery, image.uid)
         indx -= 1;
         if (indx < 0) {
             indx = gallery.images.length - 2;
         }
-        popup.innerHTML = ""
+        popup.innerHTML = `<button class="back"><img src="assets/gallery.svg" class="back" alt="back to gallery"></button>`
         imageClick(gallery.images[indx], gallery)
     })
     next.addEventListener("click", (e) => {
@@ -217,16 +234,17 @@ function imageClick(image, gallery) {
         if (indx == gallery.images.length) {
             indx = 0;
         }
-        popup.innerHTML = ""
+        popup.innerHTML = `<button class="back"><img src="assets/gallery.svg" class="back" alt="back to gallery"></button>`
         imageClick(gallery.images[indx], gallery)
     })
 
     popup.addEventListener("click", (e) => {
-        if (e.target.nodeName == "IMG" || e.target.nodeName == "P" || e.target.nodeName == "BUTTON" || e.target.nodeName == "VIDEO") {
+        console.log(e.target)
+        if ((e.target.nodeName == "IMG" || e.target.nodeName == "P" || e.target.nodeName == "BUTTON" || e.target.nodeName == "VIDEO") && !e.target.classList.contains("back")) {
             return
         }
         popup.classList.remove("active");
-        popup.innerHTML = ""
+        popup.innerHTML = `<button class="back"><img src="assets/gallery.svg" class="back" alt="back to gallery"></button>`
         document.getElementById("body").classList.remove("no-scroll")
     })
 }
