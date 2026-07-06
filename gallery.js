@@ -85,8 +85,15 @@ function addImage(image, gallery, popup) {
         })
         el.addEventListener("load", () => {
             imageLoaded(gallery);
+            if (image.caption == "" && EXIF != undefined) {
+                console.log("a")
+                EXIF.getData(el, function() {
+                    image.caption = EXIF.getTag(this, "ImageDescription");
+                });
+            }
         })
     }
+
     return cont
 }
 
@@ -178,6 +185,7 @@ function imageClick(image, gallery) {
 
     let caption = document.createElement("p");
     caption.textContent = image.caption;
+            console.log(image.caption)
     caption.classList.add("caption");
     caption.setAttribute("uid", image.uid)
 
