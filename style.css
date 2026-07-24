@@ -129,6 +129,19 @@ body {
     margin: auto;
 }
 
+.centered {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+}
+
+.centered p, .centered img{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 .wrapper-title {
     text-align: center;
 }
