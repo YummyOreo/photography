@@ -12,6 +12,7 @@ let photos = [
 	importPhoto("../assets/photos/portfolio/sports/1.jpg", "Declan Miller (Carleton College CUT), Gavin Abrahamsson (Massachusetts Zoodisc) and Wyatt Kellman (Massachusetts Zoodisc) fend for disc in championship game during the open Ultimate Frisbee D1 Championship in Rockford, Ill. On May 25, 2026."),
 	importPhoto("../assets/photos/portfolio/protest/6.jpg", "Protesters gather in Scoville Park, Oak Park, Ill., to protest against ICE. Jan. 30, 2026."),
 	importPhoto("../assets/photos/portfolio/msc/1.jpg", "Winter Pearson, TBFighter attending Tuberculosis Hill Day on March 3, 2026."),
+	importPhoto("./assets/photos/frosty-fridays/1.jpg", "Participant jumps into Lake Michigan for Frosty Fridays near the Lincoln Park Chess Pavilion on June 24, 2026."),
 	importPhoto("../assets/photos/portfolio/msc/3.jpg", "Parking lot in Montreal, Canada, on March 20, 2026."),
 	importPhoto("../assets/photos/portfolio/sports/4.jpg", "Kyliah Mcroy (Carleton College Syzygy) celebrates after scoring a point in the womens' championship match against the University of British Columbia during the Ultimate Frisbee D1 Championship in Rockford, Ill. on May 25, 2026."),
 	importPhoto("../assets/photos/portfolio/msc/5.jpg", "Item on display at the Vatican Museum."),
