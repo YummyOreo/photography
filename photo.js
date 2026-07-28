@@ -16,7 +16,7 @@ let photos = [
 	importPhoto("../assets/photos/portfolio/msc/3.jpg", "Parking lot in Montreal, Canada, on March 20, 2026."),
 	importPhoto("../assets/photos/portfolio/sports/4.jpg", "Kyliah Mcroy (Carleton College Syzygy) celebrates after scoring a point in the womens' championship match against the University of British Columbia during the Ultimate Frisbee D1 Championship in Rockford, Ill. on May 25, 2026."),
 	importPhoto("../assets/photos/portfolio/msc/5.jpg", "Item on display at the Vatican Museum."),
-	importPhoto("../assets/photos/portfolio/msc/2.jpg", "Rug shop in Paris."),
+	importPhoto("../assets/photos/frosty-fridays/4.jpg", "Jacob White poses for a portrait. He started to post on social media about his Friday morning jumps into the lake shortly after moving to Chicago, attracting around a hundred people to join him. One reason he started was as a way to meet people. 'Moving to a big city is challenging to go out and meet new friends. So I was like, [Frosty Fridays] is a good way to, you know, connect with people.' June 24, 2026"),
 ]
 
 let gallery = newGallery(photos, document.getElementById("photos"))
