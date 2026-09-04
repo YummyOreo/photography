@@ -216,7 +216,7 @@ function imageClick(image, gallery) {
             let indx = getIndex(gallery, image.uid)
             indx -= 1;
             if (indx < 0) {
-                indx = gallery.images.length - 2;
+                indx = gallery.images.length - 1;
             }
             popup.innerHTML = `<button class="back"><img src="/assets/gallery.svg" class="back" alt="back to gallery"></button>`
             imageClick(gallery.images[indx], gallery)
@@ -231,7 +231,7 @@ function imageClick(image, gallery) {
         let indx = getIndex(gallery, image.uid)
         indx -= 1;
         if (indx < 0) {
-            indx = gallery.images.length - 2;
+            indx = gallery.images.length - 1;
         }
         popup.innerHTML = `<button class="back"><img src="/assets/gallery.svg" class="back" alt="back to gallery"></button>`
         imageClick(gallery.images[indx], gallery)

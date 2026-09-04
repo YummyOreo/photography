@@ -529,10 +529,11 @@ footer a {
 
     .popup #controls img {
         width: 10vw;
+        padding-bottom: 1rem;
     }
 
     .popup div {
-        width: 90%;
+        width: 100%;
         margin-top: auto;
     }
 
