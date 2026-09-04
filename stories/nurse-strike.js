@@ -2,7 +2,7 @@ import { newGallery, importPhoto, importVideo } from "../gallery.js";
 
 let photos = [
 	importPhoto("../assets/photos/nurse-strike/1.jpg", ""),
-	importVideo("../assets/photos/nurse-strike/video.mp4", "", "../assets/photos/nurse-strike/video.jpg", 1080, 1620),
+	importVideo("https://bucket.quinnyates.com/portfolio/nurse-strike.mp4", "", "../assets/photos/nurse-strike/video.jpg", 1080, 1620),
 	importPhoto("../assets/photos/nurse-strike/2.jpg", ""),
 	importPhoto("../assets/photos/nurse-strike/3.jpg", ""),
 	importPhoto("../assets/photos/nurse-strike/4.jpg", ""),
