@@ -507,9 +507,9 @@ footer a {
         padding: 1rem;
     }
 
-    nav ul li:not(:last-child) {
-        display: none;
-    }
+    /* nav ul li:not(:last-child) { */
+    /*     display: none; */
+    /* } */
 
     .wrapper {
         width: 90%;
