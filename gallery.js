@@ -165,9 +165,9 @@ function imageClick(image, gallery) {
     document.getElementById("body").classList.add("no-scroll")
 
     const prev = document.createElement("button");
-    prev.innerHTML = `<img src="./assets/prev.svg" alt="previous photo">`;
+    prev.innerHTML = `<img src="/assets/prev.svg" alt="previous photo">`;
     const next = document.createElement("button");
-    next.innerHTML = `<img src="./assets/next.svg" alt="next photo">`;
+    next.innerHTML = `<img src="/assets/next.svg" alt="next photo">`;
 
     let width = document.body.getBoundingClientRect().width;
     if (width > 992) {
@@ -209,7 +209,7 @@ function imageClick(image, gallery) {
             if (indx == gallery.images.length) {
                 indx = 0;
             }
-            popup.innerHTML = `<button class="back"><img src="assets/gallery.svg" class="back" alt="back to gallery"></button>`
+            popup.innerHTML = `<button class="back"><img src="/assets/gallery.svg" class="back" alt="back to gallery"></button>`
             imageClick(gallery.images[indx], gallery)
         } else if (e.key == "ArrowLeft") {
             document.body.removeEventListener("keyup", keyUp)
@@ -218,11 +218,11 @@ function imageClick(image, gallery) {
             if (indx < 0) {
                 indx = gallery.images.length - 2;
             }
-            popup.innerHTML = `<button class="back"><img src="assets/gallery.svg" class="back" alt="back to gallery"></button>`
+            popup.innerHTML = `<button class="back"><img src="/assets/gallery.svg" class="back" alt="back to gallery"></button>`
             imageClick(gallery.images[indx], gallery)
         } else if (e.key == "Escape") {
             popup.classList.remove("active");
-            popup.innerHTML = `<button class="back"><img src="assets/gallery.svg" alt="back to gallery"></button>`
+            popup.innerHTML = `<button class="back"><img src="/assets/gallery.svg" alt="back to gallery"></button>`
             document.getElementById("body").classList.remove("no-scroll")
         }
     })
@@ -233,7 +233,7 @@ function imageClick(image, gallery) {
         if (indx < 0) {
             indx = gallery.images.length - 2;
         }
-        popup.innerHTML = `<button class="back"><img src="assets/gallery.svg" class="back" alt="back to gallery"></button>`
+        popup.innerHTML = `<button class="back"><img src="/assets/gallery.svg" class="back" alt="back to gallery"></button>`
         imageClick(gallery.images[indx], gallery)
     })
     next.addEventListener("click", (e) => {
@@ -242,7 +242,7 @@ function imageClick(image, gallery) {
         if (indx == gallery.images.length) {
             indx = 0;
         }
-        popup.innerHTML = `<button class="back"><img src="assets/gallery.svg" class="back" alt="back to gallery"></button>`
+        popup.innerHTML = `<button class="back"><img src="/assets/gallery.svg" class="back" alt="back to gallery"></button>`
         imageClick(gallery.images[indx], gallery)
     })
 
@@ -252,7 +252,7 @@ function imageClick(image, gallery) {
             return
         }
         popup.classList.remove("active");
-        popup.innerHTML = `<button class="back"><img src="assets/gallery.svg" class="back" alt="back to gallery"></button>`
+        popup.innerHTML = `<button class="back"><img src="/assets/gallery.svg" class="back" alt="back to gallery"></button>`
         document.getElementById("body").classList.remove("no-scroll")
     })
 }
