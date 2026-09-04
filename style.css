@@ -446,7 +446,7 @@ nav {
     padding-top: 1rem;
     border-bottom: 2px solid var(--fg);
     margin: auto auto;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     width: 70%;
     /* background: var(--fg); */
     display: flex;
@@ -551,5 +551,10 @@ footer a {
 
     .info span {
         font-size: 0.8rem;
+    }
+
+    .wrapper-split {
+        flex-direction: column;
+        gap: 0rem;
     }
 }
