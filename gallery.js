@@ -34,7 +34,7 @@ function render(gallery) {
         el.style.left = (initialX + currentCol * (width + gap)) + "px";
         el.style.top = (offsetY[currentCol]) + "px";
 
-        offsetY[currentCol] += height + gap;
+        offsetY[currentCol] += height + (gap/2);
 
         if (colNumber == 1) {
             continue
