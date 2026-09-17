@@ -10,12 +10,15 @@ let photos = [
 	importPhoto("../assets/photos/portfolio/sports/5.jpg", "Carleton College's Syzygy wins the womens' Ultimate Frisbee D1 Championship against the University of British Columbia in Rockford, Ill. on May 25, 2026."),
 	importPhoto("../assets/photos/portfolio/msc/4.jpg", "People look at the opened Ghent Altarpiece at Saint Bavo's Cathedral on June 22, 2026."),
 	importPhoto("../assets/photos/portfolio/sports/1.jpg", "Declan Miller (Carleton College CUT), Gavin Abrahamsson (Massachusetts Zoodisc) and Wyatt Kellman (Massachusetts Zoodisc) fend for disc in championship game during the open Ultimate Frisbee D1 Championship in Rockford, Ill. On May 25, 2026."),
+	importPhoto("../assets/photos/portfolio/event/3.jpg", "Leon Timbo playing to a packed nightclub at American Music Festival hosted by Fitzgeralds in Berwyn, Ill. on July 2, 2026"),
 	importPhoto("../assets/photos/portfolio/protest/6.jpg", "Protesters gather in Scoville Park, Oak Park, Ill., to protest against ICE. Jan. 30, 2026."),
 	importPhoto("../assets/photos/portfolio/msc/1.jpg", "Winter Pearson, TBFighter attending Tuberculosis Hill Day on March 3, 2026."),
 	importPhoto("./assets/photos/frosty-fridays/1.jpg", "Participant jumps into Lake Michigan for Frosty Fridays near the Lincoln Park Chess Pavilion on June 24, 2026."),
+	importPhoto("../assets/photos/portfolio/event/4.jpg", "The Chicago Bike Sox arrive at Rate Field. Aug. 25, 2026."),
 	importPhoto("../assets/photos/portfolio/msc/3.jpg", "Parking lot in Montreal, Canada, on March 20, 2026."),
 	importPhoto("../assets/photos/portfolio/sports/4.jpg", "Kyliah Mcroy (Carleton College Syzygy) celebrates after scoring a point in the womens' championship match against the University of British Columbia during the Ultimate Frisbee D1 Championship in Rockford, Ill. on May 25, 2026."),
 	importPhoto("../assets/photos/frosty-fridays/4.jpg", "Jacob White poses for a portrait. He started to post on social media about his Friday morning jumps into the lake shortly after moving to Chicago, attracting around a hundred people to join him. One reason he started was as a way to meet people. 'Moving to a big city is challenging to go out and meet new friends. So I was like, [Frosty Fridays] is a good way to, you know, connect with people.' June 24, 2026"),
+	importPhoto("../assets/photos/portfolio/protest/2.jpg", "Protesters and ICE shove each other as a crashed ICE vehicle gets towed. McKinley Park, Chicago, Ill. August 24, 2026."),
 ]
 
 let gallery = newGallery(photos, document.getElementById("photos"))
